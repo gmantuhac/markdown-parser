@@ -22,6 +22,14 @@ public class MarkdownParseTest { // The class itself
 
     @Test
     public void testMiddleFile() throws IOException {
+        Path fileName = Path.of("test-fileinmiddle.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals(List.of("ucsd.edu"), links);
+    }
+
+    @Test
+    public void testBackwardFile() throws IOException {
         Path fileName = Path.of("test-filebackward.md");
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
