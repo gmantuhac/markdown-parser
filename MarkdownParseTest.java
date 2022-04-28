@@ -19,6 +19,14 @@ public class MarkdownParseTest { // The class itself
         ArrayList<String> links = MarkdownParse.getLinks(content);
         assertEquals(List.of("https://something.com", "some-thing.html"), links);
     }
+
+    @Test
+    public void testMiddleFile() throws IOException {
+        Path fileName = Path.of("test-filebackward.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        assertEquals(List.of("ucsd.edu"), links);
+    }
 }
 
 
